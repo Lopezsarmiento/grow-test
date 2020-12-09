@@ -1,0 +1,5 @@
+GET http://localhost:4001/people
+###
+
+GET http://localhost:4001/planets
+###
