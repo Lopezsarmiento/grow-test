@@ -2,7 +2,6 @@
 // Dependencies
 const express = require("express");
 const axios = require("axios");
-const { response } = require("express");
 const router = express.Router();
 
 // modules
@@ -35,6 +34,7 @@ const getAllPlanets = async () => {
   const planets = [];
   let url = "https://swapi.dev/api/planets";
   let stop = false;
+
   try {
     // loop the response until there is no more next pages
     while (url && !stop) {
@@ -49,8 +49,9 @@ const getAllPlanets = async () => {
       // update endpoint
       url = data.next;
 
-      // loop through results and add items to people array
+      // loop through result and add items to planets array
       data.results.map(async (item) => {
+        // fetch resident names and add them to planet
         item.residents = await getResidents(item);
         planets.push(item);
       });

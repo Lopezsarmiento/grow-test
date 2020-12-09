@@ -11,9 +11,8 @@ const router = express.Router();
 router.get("/:sortBy?", async (req, res) => {
   let sortby = req.params.sortBy;
   // retrieve all people
-  let people = await getAllPeople();
+  const people = await getAllPeople();
 
-  //
   if (!people) {
     // Return response to client
     return res.status(400).json({
@@ -26,6 +25,7 @@ router.get("/:sortBy?", async (req, res) => {
   if (sortby) {
     sortPeople(sortby, people);
   }
+
   // Return response to client
   return res.status(200).json({
     success: true,
@@ -39,6 +39,7 @@ const getAllPeople = async () => {
   const people = [];
   let url = "https://swapi.dev/api/people";
   let stop = false;
+
   try {
     // loop the response until there is no more next pages
     while (url && !stop) {

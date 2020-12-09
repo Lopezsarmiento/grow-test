@@ -24,8 +24,9 @@ app.use("/people", peopleRoute);
 app.use("/planets", planetsRoute);
 
 app.get("/", (req, res) => {
-  res.send("grow api");
+  res.send("A little exercise using a Star Wars API https://swapi.dev/");
 });
+
 const PORT = process.env.PORT || 4001;
 
 app.listen(PORT, () => {
